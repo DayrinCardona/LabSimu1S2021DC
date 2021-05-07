@@ -17,7 +17,7 @@ int main(){
     int a[10];
     char letra;
     int n=0;
-    //Se llena el arreglo con 10 números pares entre 2 y 20 con un ciclo que recorre los números de dos en dos y los guarda en el arreglo. //
+    //Se llena el arreglo con 10 números pares entre 2 y 20 con un ciclo que recorre los números de dos en dos y los guarda en el arreglo.
     for(int i=2;i<=20;i=i+2){
         //El arreglo en la posición n se iguala al número en i y luego se aumenta la variable de conteo del arreglo. 
         a[n]=i;
@@ -26,6 +26,12 @@ int main(){
     //Al iniciar el programa, pregunta al usuario cómo quiere observar el arreglo, el usuario tiene que presionar la letra a o d.
     printf("Escoja la manera en la que quiere observar el arreglo, a para ascendente y d para descendente \n");
     letra = getchar();
+    //Mientras el usuario no presione la letra a o d, el programa continúa pidiendo que ingrese de nuevo, hasta que el usuario ingrese ya sea a o d.
+    while(letra!='a'&&letra!='d')
+    {
+        letra = getchar();
+
+    }
     //Si la letra que el usuario presionó es a, el programa muestra el arreglo en orden ascendente, utilizando un for para imprimir cada componente del arreglo. 
     if(letra == 'a'){
         printf("El vector en orden ascendente es \n ");
