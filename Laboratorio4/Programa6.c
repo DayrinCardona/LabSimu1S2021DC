@@ -69,7 +69,7 @@ void funciond(){
     double d=0;
     for(int k=2;k<=n;k++)
     { 
-       //Función de la cuartasumatoria.
+       //Función de la cuarta sumatoria.
        int exp;
        exp= pow((double)2,(double)k-2);
        d += 3*exp+4;
