@@ -51,13 +51,15 @@ int main(){
         if(te(3.248E-4,3E7,1.5E6)){
             //El empuje se hace cero
             E = 0;
-        }
+    }
     //Ejecutando el método numérico
         a+=ddy(1.1E5, 1.5E6, 3.248E-4, 3E7, t, v, 61.27, 201.06, a);
         v+=dy(a,v);
         t+=delta;
     }
+    //Se guarda el último valor en el archivo
     fprintf(pf,"%.2f\t%.2f\n",t,y);
+    //Se cierra el archivo
     fclose(pf);
 
     //Altura máxima que alcanza el primer cohete
@@ -71,7 +73,18 @@ int main(){
     printf("Sección transversal del cohete A %f \n",201.06);
     printf("Masa del propulsor m0%f \n",1.1E5);
     printf("Masa inicial del combustible mf0%f \n",1.5E6);
-
+    while ((y>=0)&&(v<0)){
+        //Generando bandera para detectar el momento en el que el combustible es nulo.
+        if(te(2.248E-4,2.7E7,1.5E6)){
+            //El empuje se hace cero
+            E = 0;
+    }
+    //Ejecutando el método numérico
+        a+=ddy(1.1E5, 1.5E6, 2.248E-4, 2.7E7, t, v, 61.27, 201.06, a);
+        v+=dy(a,v);
+        t+=delta;
+    }
+    alturamax(2.7E7, 1.1E5, 1.5E6, 2.248E-4, t);
     //Características del tercer cohete
     printf("El nombre del cohete es Chac \n");
     printf("Empuje del cohete E0 %f \n",2.5E7);
@@ -80,7 +93,18 @@ int main(){
     printf("Sección transversal del cohete A %d \n",215);
     printf("Masa del propulsor m0%f \n",1.8E5);
     printf("Masa inicial del combustible mf0%f \n",2.1E6);
-
+    while ((y>=0)&&(v<0)){
+        //Generando bandera para detectar el momento en el que el combustible es nulo.
+        if(te(2.248E-4,2.5E7,2.1E6)){
+            //El empuje se hace cero
+            E = 0;
+    }
+    //Ejecutando el método numérico
+        a+=ddy(1.8E5, 2.1E6, 2.248E-4, 2.5E7, t, v, 70.25, 215.00, a);
+        v+=dy(a,v);
+        t+=delta;
+    }
+    alturamax(2.7E7, 1.1E5, 1.5E6, 2.248E-4, t);
     return 0;
 }
 //Función de la latura
@@ -126,7 +150,7 @@ double g(double v){
 double fa(double v, double CD, double A, double a){
     double rep;
     double alt = T0/L;
-    if (y>alt){
+    if (y>=alt){
         p(v)==0;
     }
     //Se verifica el valor absoluto de la primera derivada.
